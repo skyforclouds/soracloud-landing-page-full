@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import UseCases from "../components/UseCases";
-import Metrics from "../components/Metrics";
 import Pricing from "../components/Pricing";
 
 const Index = () => {
@@ -18,7 +17,6 @@ const Index = () => {
       <Hero />
       <UseCases />
       <Features />
-      <Metrics />
       <Pricing />
     </main>
   );
