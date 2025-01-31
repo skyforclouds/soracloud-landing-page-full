@@ -4,23 +4,23 @@ import { Terminal, Zap, Shield, BarChart } from "lucide-react";
 const features = [
   {
     icon: <Terminal className="w-6 h-6" />,
-    title: "Simple API",
-    description: "Write code that feels natural. No infrastructure complexity.",
+    title: "One-step setup",
+    description: "Connect any compute resource with a single command and manage your entire AI infra stack from one dashboard.",
   },
   {
     icon: <Zap className="w-6 h-6" />,
-    title: "Instant Scaling",
-    description: "From one to thousands of GPUs in seconds.",
+    title: "Efficient compute",
+    description: "Optimized with latest quantization and acceleration techniques for 5x performance boost",
   },
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Usage-Based Pricing",
-    description: "Pay only for what you use, down to the second.",
+    title: "Smart resource management",
+    description: "Autoscaling and intelligent scheduling of batch jobs to maximize resource utilization",
   },
   {
     icon: <BarChart className="w-6 h-6" />,
-    title: "Built-in Monitoring",
-    description: "Real-time insights into your GPU workloads.",
+    title: "Built for enterprise",
+    description: "Enterprise-grade security with role-based access control. Secure network isolation between workloads and teams. Full audit logging and reporting built in.",
   },
 ];
 

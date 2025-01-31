@@ -16,8 +16,8 @@ const Index = () => {
   return (
     <main className="bg-white">
       <Hero />
-      <Features />
       <UseCases />
+      <Features />
       <CodeExample />
       <Metrics />
     </main>

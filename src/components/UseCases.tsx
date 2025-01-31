@@ -26,6 +26,14 @@ const UseCases = () => {
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-4">
+            Stop wrangling GPUs, start building AI
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We make your infra work for you. Prototype production-ready apps in minutes, not days or weeks.
+          </p>
+        </div>
         {useCases.map((useCase, index) => (
           <motion.div
             key={index}
