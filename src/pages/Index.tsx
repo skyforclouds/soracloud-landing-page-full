@@ -17,12 +17,10 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-background pt-16">
+    <div className="bg-white pt-16">
       <Navbar />
-      <div className="min-h-screen flex flex-col">
-        <Hero />
-        <LogosCarousel />
-      </div>
+      <Hero />
+      <LogosCarousel />
       <UseCases />
       <Features />
       <Pricing />
