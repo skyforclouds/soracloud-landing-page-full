@@ -5,10 +5,9 @@ const CodeExample = () => {
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Simple to Integrate</h2>
+          <h2 className="text-3xl font-bold mb-4">Code-First Experience</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Get started with just a few lines of code. No complex configuration
-            needed.
+            Write Python code that runs on GPUs, just like you'd write any other code.
           </p>
         </div>
         <motion.div
@@ -19,23 +18,30 @@ const CodeExample = () => {
           className="bg-gray-900 rounded-lg p-8 overflow-x-auto"
         >
           <pre className="text-gray-100 font-mono text-sm">
-            <code>{`import { GPUCluster } from '@gpu-orchestrator/core'
+            <code>{`from gpu_orchard import Cluster
 
-// Initialize your cluster
-const cluster = new GPUCluster({
-  region: 'us-west-2',
-  instanceType: 'gpu.large'
-})
+def train_model():
+    # Your ML training code here
+    pass
 
-// Deploy your workload
-await cluster.deploy({
-  model: './models/stable-diffusion',
-  scaling: {
-    minInstances: 1,
-    maxInstances: 10,
-    targetUtilization: 0.8
-  }
-})`}</code>
+# Initialize cluster with auto-scaling
+cluster = Cluster(
+    name="training-cluster",
+    gpu_type="a100",
+    min_instances=1,
+    max_instances=10
+)
+
+# Deploy your training job
+job = cluster.run(
+    train_model,
+    requirements=["torch", "transformers"],
+    env={"WANDB_API_KEY": "your-key"}
+)
+
+# Monitor progress in real-time
+job.stream_logs()
+`}</code>
           </pre>
         </motion.div>
       </div>

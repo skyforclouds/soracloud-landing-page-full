@@ -5,22 +5,22 @@ const features = [
   {
     icon: <Terminal className="w-6 h-6" />,
     title: "Simple API",
-    description: "Intuitive API design that feels natural to developers.",
+    description: "Write code that feels natural. No infrastructure complexity.",
   },
   {
     icon: <Zap className="w-6 h-6" />,
-    title: "Lightning Fast",
-    description: "Optimized resource allocation with minimal latency.",
+    title: "Instant Scaling",
+    description: "From one to thousands of GPUs in seconds.",
   },
   {
     icon: <Shield className="w-6 h-6" />,
-    title: "Secure by Default",
-    description: "Enterprise-grade security with zero configuration.",
+    title: "Usage-Based Pricing",
+    description: "Pay only for what you use, down to the second.",
   },
   {
     icon: <BarChart className="w-6 h-6" />,
-    title: "Real-time Metrics",
-    description: "Comprehensive insights into your GPU utilization.",
+    title: "Built-in Monitoring",
+    description: "Real-time insights into your GPU workloads.",
   },
 ];
 
@@ -30,11 +30,10 @@ const Features = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">
-            Built for Developer Productivity
+            Infrastructure That Gets Out of Your Way
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Everything you need to manage GPU resources at scale, wrapped in a
-            developer-friendly interface.
+            Focus on building your AI applications. We'll handle the infrastructure.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
