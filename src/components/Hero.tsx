@@ -13,19 +13,17 @@ const Hero = () => {
           Now in Public Beta
         </span>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-          Cloud GPU Infrastructure,
-          <br /> Without the Complexity
+          The <em className="not-italic text-accent">Operating System</em> for Your AI Infrastructure
         </h1>
         <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Deploy GPU workloads in seconds. No infrastructure management, no hidden costs.
-          Just pure computational power when you need it.
+          Single control plane for your AI compute whether public cloud or on-prem. Serverless inference and multimodal AI applications out of the box, optimized for performance and cost.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button className="px-8 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors">
-            Start Building
+            Request Access
           </button>
           <button className="px-8 py-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-            Read Documentation
+            View Docs
           </button>
         </div>
       </motion.div>
