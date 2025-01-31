@@ -37,9 +37,9 @@ const logos = [
 
 const LogosCarousel = () => {
   return (
-    <section className="py-12 bg-secondary/30">
+    <section className="py-8 bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl font-semibold text-center mb-12">
+        <h2 className="text-2xl font-semibold text-center mb-8">
           Trusted by AI developers and researchers
         </h2>
         <div className="relative overflow-hidden">
