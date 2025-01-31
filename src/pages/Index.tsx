@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import UseCases from "../components/UseCases";
-import CodeExample from "../components/CodeExample";
 import Metrics from "../components/Metrics";
+import Pricing from "../components/Pricing";
 
 const Index = () => {
   useEffect(() => {
@@ -18,8 +18,8 @@ const Index = () => {
       <Hero />
       <UseCases />
       <Features />
-      <CodeExample />
       <Metrics />
+      <Pricing />
     </main>
   );
 };
