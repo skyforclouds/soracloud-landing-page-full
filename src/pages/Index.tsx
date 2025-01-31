@@ -1,8 +1,11 @@
 import { useEffect } from "react";
+import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import UseCases from "../components/UseCases";
 import Pricing from "../components/Pricing";
+import CTA from "../components/CTA";
+import Footer from "../components/Footer";
 
 const Index = () => {
   useEffect(() => {
@@ -13,12 +16,15 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="bg-white">
+    <div className="bg-white pt-16">
+      <Navbar />
       <Hero />
       <UseCases />
       <Features />
       <Pricing />
-    </main>
+      <CTA />
+      <Footer />
+    </div>
   );
 };
 

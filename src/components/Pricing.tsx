@@ -80,7 +80,9 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${
+                plan.name === "Team" ? "ring-2 ring-accent scale-105" : ""
+              }`}
             >
               <div className="p-8 border-b">
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
@@ -105,8 +107,8 @@ const Pricing = () => {
                   </p>
                 </div>
               </div>
-              <div className="p-8">
-                <ul className="space-y-4">
+              <div className="p-8 flex flex-col h-full">
+                <ul className="space-y-4 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
                       <Check className="w-5 h-5 text-accent mr-3" />
