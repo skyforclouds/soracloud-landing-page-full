@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -10,7 +11,7 @@ const Hero = () => {
         className="text-center max-w-4xl mx-auto"
       >
         <span className="inline-block px-3 py-1 text-sm font-medium bg-accent/10 text-accent rounded-full mb-6">
-          Now in Public Beta
+          Coming Soon!
         </span>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
           The <em className="not-italic text-accent">Operating System</em> for Your AI Infrastructure
