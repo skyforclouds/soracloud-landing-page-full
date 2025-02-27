@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Briefcase } from "lucide-react";
 
 const CompanyPage = () => {
   return (
@@ -19,7 +18,6 @@ const CompanyPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">We wrangle GPU infrastructure so you can focus on building AI products.</h1>
           <div className="mt-6 mb-8">
             <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Briefcase className="w-5 h-5 mr-2" />
               We're hiring!
             </Button>
           </div>
