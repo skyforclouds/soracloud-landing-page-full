@@ -55,7 +55,7 @@ const plans = [
       "On-premise support",
       "Network isolation"
     ],
-    overageRate: "Custom pricing"
+    overageRate: ""
   }
 ];
 
@@ -69,7 +69,7 @@ const gpuOptions = [
   { name: "NVIDIA H100", mghPerHour: 6 },
 ];
 
-const Pricing = () => {
+const Pricing = ({ showCalculator = true }) => {
   const [calculatedItems, setCalculatedItems] = useState<{
     id: string;
     gpuType: string;
@@ -186,10 +186,14 @@ const Pricing = () => {
                 <div className="mt-4 p-2 bg-secondary/70 rounded-lg">
                   <p className="text-sm font-medium text-foreground">
                     {plan.quota}
-                    <br />
-                    <span className="text-muted-foreground">
-                      Then {plan.overageRate}
-                    </span>
+                    {plan.overageRate && (
+                      <>
+                        <br />
+                        <span className="text-muted-foreground">
+                          Then {plan.overageRate}
+                        </span>
+                      </>
+                    )}
                   </p>
                 </div>
               </div>
@@ -210,142 +214,144 @@ const Pricing = () => {
           ))}
         </div>
         
-        {/* Pricing Calculator Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-24 max-w-4xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Pricing Calculator</h2>
-          <p className="text-muted-foreground text-center mb-8">Estimate your monthly GPU usage and find the right plan for your needs.</p>
-          
-          <div className="glass-effect rounded-2xl p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div>
-                <label htmlFor="gpu-type" className="block text-sm font-medium text-muted-foreground mb-2">
-                  GPU Type
-                </label>
-                <Select value={selectedGpu} onValueChange={setSelectedGpu}>
-                  <SelectTrigger id="gpu-type" className="w-full">
-                    <SelectValue placeholder="Select GPU" />
-                  </SelectTrigger>
-                  <SelectContent position="item-aligned" align="center">
-                    {gpuOptions.map((gpu) => (
-                      <SelectItem key={gpu.name} value={gpu.name}>
-                        {gpu.name} ({gpu.mghPerHour} MGH/hr)
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              <div>
-                <label htmlFor="quantity" className="block text-sm font-medium text-muted-foreground mb-2">
-                  Quantity
-                </label>
-                <Input
-                  id="quantity"
-                  type="number"
-                  min="1"
-                  value={quantity}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (value === '') {
-                      setQuantity('');
-                    } else {
-                      const numValue = parseInt(value);
-                      if (!isNaN(numValue) && numValue > 0) {
-                        setQuantity(numValue);
-                      }
-                    }
-                  }}
-                  className="w-full"
-                />
-              </div>
-              
-              <div className="flex items-end">
-                <Button 
-                  onClick={addItem} 
-                  className="w-full"
-                  disabled={!selectedGpu || (typeof quantity === 'string' && quantity === '') || (typeof quantity === 'number' && quantity < 1)}
-                >
-                  <Plus className="mr-2 h-4 w-4" /> Add to Estimate
-                </Button>
-              </div>
-            </div>
+        {/* Pricing Calculator Section - only shown when showCalculator is true */}
+        {showCalculator && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="mt-24 max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Pricing Calculator</h2>
+            <p className="text-muted-foreground text-center mb-8">Estimate your monthly GPU usage and find the right plan for your needs.</p>
             
-            {calculatedItems.length > 0 && (
-              <div className="mt-8">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-medium text-foreground">Your Configuration</h3>
+            <div className="glass-effect rounded-2xl p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div>
+                  <label htmlFor="gpu-type" className="block text-sm font-medium text-muted-foreground mb-2">
+                    GPU Type
+                  </label>
+                  <Select value={selectedGpu} onValueChange={setSelectedGpu}>
+                    <SelectTrigger id="gpu-type" className="w-full">
+                      <SelectValue placeholder="Select GPU" />
+                    </SelectTrigger>
+                    <SelectContent position="item-aligned" align="center">
+                      {gpuOptions.map((gpu) => (
+                        <SelectItem key={gpu.name} value={gpu.name}>
+                          {gpu.name} ({gpu.mghPerHour} MGH/hr)
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <label htmlFor="quantity" className="block text-sm font-medium text-muted-foreground mb-2">
+                    Quantity
+                  </label>
+                  <Input
+                    id="quantity"
+                    type="number"
+                    min="1"
+                    value={quantity}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value === '') {
+                        setQuantity('');
+                      } else {
+                        const numValue = parseInt(value);
+                        if (!isNaN(numValue) && numValue > 0) {
+                          setQuantity(numValue);
+                        }
+                      }
+                    }}
+                    className="w-full"
+                  />
+                </div>
+                
+                <div className="flex items-end">
                   <Button 
-                    variant="outline" 
-                    size="sm" 
-                    onClick={clearAllItems}
-                    className="text-muted-foreground hover:text-destructive"
+                    onClick={addItem} 
+                    className="w-full"
+                    disabled={!selectedGpu || (typeof quantity === 'string' && quantity === '') || (typeof quantity === 'number' && quantity < 1)}
                   >
-                    <Eraser className="mr-2 h-4 w-4" /> Clear All
+                    <Plus className="mr-2 h-4 w-4" /> Add to Estimate
                   </Button>
                 </div>
-                
-                <div className="rounded-lg overflow-hidden border border-border">
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>GPU Type</TableHead>
-                        <TableHead>Quantity</TableHead>
-                        <TableHead>MGH/Hour</TableHead>
-                        <TableHead>Monthly MGH</TableHead>
-                        <TableHead className="w-[80px]"></TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {calculatedItems.map((item) => (
-                        <TableRow key={item.id}>
-                          <TableCell>{item.gpuType}</TableCell>
-                          <TableCell>{item.quantity}</TableCell>
-                          <TableCell>{item.mghPerHour * item.quantity}</TableCell>
-                          <TableCell>{item.totalMGH.toLocaleString()}</TableCell>
-                          <TableCell>
-                            <Button 
-                              variant="ghost" 
-                              size="icon"
-                              onClick={() => removeItem(item.id)}
-                              className="text-muted-foreground hover:text-destructive"
-                            >
-                              <Trash className="h-4 w-4" />
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-                
-                <div className="mt-6 p-4 rounded-lg bg-secondary/50 flex flex-col md:flex-row justify-between items-center">
-                  <div>
-                    <p className="text-lg font-medium text-foreground">
-                      Estimated Monthly Usage: <span className="text-accent">{totalMGH.toLocaleString()} MGH</span>
-                    </p>
+              </div>
+              
+              {calculatedItems.length > 0 && (
+                <div className="mt-8">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-medium text-foreground">Your Configuration</h3>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={clearAllItems}
+                      className="text-muted-foreground hover:text-destructive"
+                    >
+                      <Eraser className="mr-2 h-4 w-4" /> Clear All
+                    </Button>
                   </div>
                   
-                  {recommendedPlan && (
-                    <div className="mt-4 md:mt-0">
-                      <p className="text-muted-foreground">
-                        Recommended Plan:
-                        <span className="ml-2 font-medium text-foreground">
-                          {recommendedPlan.name}
-                        </span>
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>GPU Type</TableHead>
+                          <TableHead>Quantity</TableHead>
+                          <TableHead>MGH/Hour</TableHead>
+                          <TableHead>Monthly MGH</TableHead>
+                          <TableHead className="w-[80px]"></TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {calculatedItems.map((item) => (
+                          <TableRow key={item.id}>
+                            <TableCell>{item.gpuType}</TableCell>
+                            <TableCell>{item.quantity}</TableCell>
+                            <TableCell>{item.mghPerHour * item.quantity}</TableCell>
+                            <TableCell>{item.totalMGH.toLocaleString()}</TableCell>
+                            <TableCell>
+                              <Button 
+                                variant="ghost" 
+                                size="icon"
+                                onClick={() => removeItem(item.id)}
+                                className="text-muted-foreground hover:text-destructive"
+                              >
+                                <Trash className="h-4 w-4" />
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                  
+                  <div className="mt-6 p-4 rounded-lg bg-secondary/50 flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                      <p className="text-lg font-medium text-foreground">
+                        Estimated Monthly Usage: <span className="text-accent">{totalMGH.toLocaleString()} MGH</span>
                       </p>
                     </div>
-                  )}
+                    
+                    {recommendedPlan && (
+                      <div className="mt-4 md:mt-0">
+                        <p className="text-muted-foreground">
+                          Recommended Plan:
+                          <span className="ml-2 font-medium text-foreground">
+                            {recommendedPlan.name}
+                          </span>
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </motion.div>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

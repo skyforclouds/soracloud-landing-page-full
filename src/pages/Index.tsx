@@ -26,7 +26,7 @@ const Index = () => {
       </div>
       <UseCases />
       <Features />
-      <Pricing />
+      <Pricing showCalculator={false} />
       <CTA />
       <Footer />
     </div>
