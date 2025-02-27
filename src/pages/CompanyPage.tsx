@@ -52,30 +52,30 @@ const CompanyPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center mb-10"
             >
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Our Team</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                We're a diverse team of engineers, researchers, and designers passionate about building the future of AI infrastructure.
-              </p>
+              <h2 className="text-3xl font-bold mb-4 text-foreground">Build stuff. Have fun.</h2>
             </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                "/placeholder.svg",
+                "/placeholder.svg",
+                "/placeholder.svg",
+                "/placeholder.svg", 
+                "/placeholder.svg",
+                "/placeholder.svg"
+              ].map((image, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="text-center"
+                  className="overflow-hidden rounded-xl glass-effect p-1"
                 >
-                  <div className="w-32 h-32 rounded-full glass-effect mx-auto mb-4 overflow-hidden p-1">
-                    <img 
-                      src="/placeholder.svg" 
-                      alt={`Team member ${index}`} 
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground">Team Member {index}</h3>
-                  <p className="text-muted-foreground">Co-founder & {index % 2 === 0 ? 'CTO' : 'CEO'}</p>
+                  <img 
+                    src={image} 
+                    alt={`Team photo ${index + 1}`} 
+                    className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                  />
                 </motion.div>
               ))}
             </div>
