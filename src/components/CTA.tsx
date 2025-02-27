@@ -11,7 +11,15 @@ const CTA = () => {
           Join leading organizations using SoraCloud to build and scale their AI applications.
         </p>
         <div className="flex justify-center">
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-lg">Request Access</Button>
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-lg">
+              Request Access
+            </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -206,9 +206,25 @@ const Pricing = ({ showCalculator = true }) => {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors">
-                  {plan.name === "Enterprise" ? "Contact Sales" : "Request Access"}
-                </button>
+                {plan.name === "Enterprise" ? (
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center"
+                  >
+                    Contact Sales
+                  </a>
+                ) : (
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center"
+                  >
+                    Request Access
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

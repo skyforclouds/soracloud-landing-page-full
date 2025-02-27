@@ -17,7 +17,13 @@ const Navbar = () => {
             <Link to="/docs" className="text-foreground/80 hover:text-foreground transition-colors">Docs</Link>
             <Link to="/company" className="text-foreground/80 hover:text-foreground transition-colors">Company</Link>
             <Link to="/blog" className="text-foreground/80 hover:text-foreground transition-colors">Blog</Link>
-            <Button variant="default">Request Access</Button>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="default">Request Access</Button>
+            </a>
           </div>
         </div>
       </div>

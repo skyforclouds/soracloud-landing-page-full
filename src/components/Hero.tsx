@@ -20,9 +20,14 @@ const Hero = () => {
           Single control plane for your AI compute whether public cloud or on-prem. Serverless inference and multimodal AI applications out of the box, optimized for performance and cost.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors">
+          <a 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors"
+          >
             Request Access
-          </button>
+          </a>
           <button className="px-8 py-3 border border-border rounded-lg hover:bg-secondary/60 transition-colors">
             View Docs
           </button>
