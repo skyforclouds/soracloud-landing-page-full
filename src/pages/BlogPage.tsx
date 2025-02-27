@@ -28,8 +28,8 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: "Building Scalable AI Pipelines with Soracloud",
-    excerpt: "A step-by-step guide to building scalable AI pipelines using Soracloud's infrastructure.",
+    title: "Building Scalable AI Pipelines with SoraCloud",
+    excerpt: "A step-by-step guide to building scalable AI pipelines using SoraCloud's infrastructure.",
     author: "Michael Patel",
     date: "June 28, 2023",
     tags: ["Tutorials", "AI Pipelines", "Scaling"],
@@ -50,7 +50,7 @@ const blogPosts = [
 
 const BlogPage = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <Navbar />
       <div className="pt-24 pb-16 px-4">
         <motion.div 
@@ -59,9 +59,9 @@ const BlogPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog</h1>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-            Insights, tutorials, and news about AI infrastructure and Soracloud
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Blog</h1>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Insights, tutorials, and news about AI infrastructure and SoraCloud
           </p>
         </motion.div>
         
@@ -73,7 +73,7 @@ const BlogPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all"
+                className="glass-effect rounded-xl overflow-hidden border-border/50 hover:bg-secondary/40 transition-all"
               >
                 <img 
                   src={post.image} 
@@ -88,10 +88,10 @@ const BlogPage = () => {
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                  <h2 className="text-xl font-bold mb-2 text-foreground">{post.title}</h2>
+                  <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
-                    <div className="flex items-center text-sm text-gray-500">
+                    <div className="flex items-center text-sm text-muted-foreground">
                       <User className="w-4 h-4 mr-1" />
                       <span>{post.author}</span>
                       <span className="mx-2">·</span>

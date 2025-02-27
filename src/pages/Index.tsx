@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
@@ -17,9 +18,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-background min-h-screen">
       <Navbar />
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col pt-16">
         <Hero />
         <LogosCarousel />
       </div>

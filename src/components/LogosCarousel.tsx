@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 
 const logos = [
@@ -37,9 +38,9 @@ const logos = [
 
 const LogosCarousel = () => {
   return (
-    <section className="py-8 bg-secondary/30">
+    <section className="py-8 bg-secondary/30 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl font-semibold text-center mb-8">
+        <h2 className="text-2xl font-semibold text-center mb-8 text-foreground">
           Trusted by AI developers and researchers
         </h2>
         <div className="relative overflow-hidden">
@@ -52,7 +53,7 @@ const LogosCarousel = () => {
                 <img
                   src={logo.src}
                   alt={`${logo.name} logo`}
-                  className="h-8 w-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+                  className="h-8 w-auto opacity-50 hover:opacity-80 transition-all invert"
                 />
               </div>
             ))}

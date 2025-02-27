@@ -40,7 +40,7 @@ const docsCategories = [
 
 const DocsPage = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       <Navbar />
       <div className="pt-24 pb-16 px-4">
         <motion.div 
@@ -49,9 +49,9 @@ const DocsPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Documentation</h1>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-            Learn how to use Soracloud to build, deploy, and scale your AI applications
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Documentation</h1>
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Learn how to use SoraCloud to build, deploy, and scale your AI applications
           </p>
         </motion.div>
         
@@ -62,11 +62,11 @@ const DocsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all p-6"
+              className="glass-effect rounded-xl border-border/50 hover:bg-secondary/40 transition-all p-6"
             >
               <div className="mb-4">{category.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-              <p className="text-gray-600 mb-4">{category.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">{category.title}</h3>
+              <p className="text-muted-foreground mb-4">{category.description}</p>
               <Link to={category.path} className="text-accent font-medium flex items-center">
                 Read more <ChevronRight className="w-4 h-4 ml-1" />
               </Link>

@@ -54,20 +54,20 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Simple, Predictable Pricing</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-foreground">Simple, Predictable Pricing</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Start with a generous monthly quota of Managed GPU Hours (MGH)
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button className="inline-flex items-center ml-1 text-gray-400 hover:text-gray-600">
+                  <button className="inline-flex items-center ml-1 text-muted-foreground hover:text-foreground">
                     <Info className="h-4 w-4" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent className="bg-white p-2 shadow-lg rounded-md border max-w-xs">
+                <TooltipContent className="bg-secondary p-2 shadow-lg rounded-md border border-border max-w-xs text-foreground">
                   <p>Based on type and number of GPUs managed by SoraCloud</p>
                 </TooltipContent>
               </Tooltip>
@@ -87,30 +87,30 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${
+              className={`glass-effect rounded-2xl overflow-hidden hover:bg-secondary/40 transition-all ${
                 plan.name === "Business" ? "ring-2 ring-accent scale-105" : ""
               }`}
             >
-              <div className="p-8 border-b">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+              <div className="p-8 border-b border-border/50">
+                <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
                 <div className="flex items-baseline mb-4">
                   {plan.price === "Custom" ? (
-                    <span className="text-4xl font-bold">Custom</span>
+                    <span className="text-4xl font-bold text-foreground">Custom</span>
                   ) : plan.price === "Free" ? (
-                    <span className="text-4xl font-bold">Free</span>
+                    <span className="text-4xl font-bold text-foreground">Free</span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold">${plan.price}</span>
-                      <span className="text-gray-600 ml-2">/month</span>
+                      <span className="text-4xl font-bold text-foreground">${plan.price}</span>
+                      <span className="text-muted-foreground ml-2">/month</span>
                     </>
                   )}
                 </div>
-                <p className="text-gray-600 text-sm">{plan.description}</p>
-                <div className="mt-4 p-2 bg-secondary rounded-lg">
-                  <p className="text-sm font-medium">
+                <p className="text-muted-foreground text-sm">{plan.description}</p>
+                <div className="mt-4 p-2 bg-secondary/70 rounded-lg">
+                  <p className="text-sm font-medium text-foreground">
                     Includes {plan.quota}
                     <br />
-                    <span className="text-gray-600">
+                    <span className="text-muted-foreground">
                       Then {plan.overageRate}
                     </span>
                   </p>
@@ -120,12 +120,12 @@ const Pricing = () => {
                 <ul className="space-y-4 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-accent mr-3" />
-                      <span className="text-sm">{feature}</span>
+                      <Check className="w-5 h-5 text-accent mr-3 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <button className="w-full mt-8 px-8 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors">
+                <button className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors">
                   {plan.name === "Enterprise" ? "Contact Sales" : "Request Access"}
                 </button>
               </div>
