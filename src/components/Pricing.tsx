@@ -60,12 +60,13 @@ const plans = [
 ];
 
 const gpuOptions = [
-  { name: "NVIDIA A100", mghPerHour: 8 },
-  { name: "NVIDIA H100", mghPerHour: 16 },
-  { name: "NVIDIA L4", mghPerHour: 2 },
   { name: "NVIDIA T4", mghPerHour: 1 },
-  { name: "AMD MI250", mghPerHour: 7 },
-  { name: "AMD MI100", mghPerHour: 5 },
+  { name: "NVIDIA L4", mghPerHour: 1 },
+  { name: "NVIDIA A10G", mghPerHour: 1 },
+  { name: "NVIDIA L40S", mghPerHour: 3 },
+  { name: "NVIDIA Tesla V100", mghPerHour: 3 },
+  { name: "NVIDIA A100", mghPerHour: 6 },
+  { name: "NVIDIA H100", mghPerHour: 6 },
 ];
 
 const Pricing = () => {
@@ -223,7 +224,7 @@ const Pricing = () => {
                   <SelectTrigger id="gpu-type" className="w-full">
                     <SelectValue placeholder="Select GPU" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent position="popper" align="start" sideOffset={4}>
                     {gpuOptions.map((gpu) => (
                       <SelectItem key={gpu.name} value={gpu.name}>
                         {gpu.name} ({gpu.mghPerHour} MGH/hr)
