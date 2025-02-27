@@ -1,62 +1,50 @@
+
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Free",
-    price: "0",
-    description: "For individual developers and small projects",
-    quota: "10 GPU hours/month",
+    name: "Developer",
+    price: "Free",
+    description: "Get started with GPU orchestration",
+    quota: "1,500 MGH",
     features: [
-      "A100 GPU access",
-      "Basic monitoring",
-      "Community support",
-      "Public models only",
-      "Shared resources"
+      "1,500 MGH included",
+      "Overage at $0.05 / MGH",
+      "1 workspace",
+      "Community support"
     ],
-    overageRate: "$3.50/hour"
+    overageRate: "$0.05/MGH"
   },
   {
-    name: "Starter",
-    price: "499",
-    description: "For startups and growing teams",
-    quota: "200 GPU hours/month",
+    name: "Business",
+    price: "890",
+    description: "Everything in Developer, plus:",
+    quota: "40,000 MGH",
     features: [
-      "Priority GPU access",
-      "Advanced monitoring",
-      "Email support",
-      "Custom model deployment",
-      "Dedicated resources"
+      "40,000 MGH credits",
+      "Overage at $0.035 / MGH",
+      "Up to 10 web console environments",
+      "Early access to new features",
+      "Email support with specialists",
+      "Priority support with dedicated engineer",
+      "Advanced security controls",
+      "Custom deployment options"
     ],
-    overageRate: "$2.75/hour"
-  },
-  {
-    name: "Team",
-    price: "1,999",
-    description: "For organizations with multiple projects",
-    quota: "1,000 GPU hours/month",
-    features: [
-      "Priority GPU access",
-      "Advanced monitoring & alerts",
-      "24/7 support",
-      "Team management",
-      "Private registry",
-      "Resource quotas"
-    ],
-    overageRate: "$2.50/hour"
+    overageRate: "$0.035/MGH"
   },
   {
     name: "Enterprise",
     price: "Custom",
-    description: "For large-scale AI operations",
-    quota: "Custom quota",
+    description: "Everything in Business, plus:",
+    quota: "Custom MGH credits",
     features: [
-      "Dedicated GPU clusters",
-      "Custom SLA",
-      "24/7 priority support",
-      "SSO & RBAC",
-      "Audit logging",
-      "Custom integrations"
+      "Custom MGH credits",
+      "Unlimited web console environments",
+      "Implementation support + dedicated team",
+      "Enterprise security package (SSO, audit logs)",
+      "On-premise support",
+      "Network isolation"
     ],
     overageRate: "Custom pricing"
   }
@@ -72,7 +60,7 @@ const Pricing = () => {
             Start with a monthly quota of GPU hours. Only pay for additional usage beyond your plan.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -81,7 +69,7 @@ const Pricing = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow ${
-                plan.name === "Team" ? "ring-2 ring-accent scale-105" : ""
+                plan.name === "Business" ? "ring-2 ring-accent scale-105" : ""
               }`}
             >
               <div className="p-8 border-b">
@@ -89,6 +77,8 @@ const Pricing = () => {
                 <div className="flex items-baseline mb-4">
                   {plan.price === "Custom" ? (
                     <span className="text-4xl font-bold">Custom</span>
+                  ) : plan.price === "Free" ? (
+                    <span className="text-4xl font-bold">Free</span>
                   ) : (
                     <>
                       <span className="text-4xl font-bold">${plan.price}</span>
