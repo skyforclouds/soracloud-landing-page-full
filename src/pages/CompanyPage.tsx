@@ -17,9 +17,11 @@ const CompanyPage = () => {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">We wrangle GPU infrastructure so you can focus on building AI products.</h1>
           <div className="mt-6 mb-8">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              We're hiring!
-            </Button>
+            <a href="mailto:info@soracloud.ai">
+              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                We're hiring!
+              </Button>
+            </a>
           </div>
         </motion.div>
         
