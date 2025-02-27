@@ -126,7 +126,7 @@ const Pricing = () => {
                   ))}
                 </ul>
                 <button className="w-full mt-8 px-8 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors">
-                  {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                  {plan.name === "Enterprise" ? "Contact Sales" : "Request Access"}
                 </button>
               </div>
             </motion.div>
