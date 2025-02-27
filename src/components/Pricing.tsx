@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Check, Info, Plus, Trash } from "lucide-react";
+import { Check, Info, Plus, Trash, Eraser } from "lucide-react";
 import { useState } from "react";
 import {
   Tooltip,
@@ -79,7 +79,7 @@ const Pricing = () => {
   }[]>([]);
   
   const [selectedGpu, setSelectedGpu] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number | string>(1);
   
   const totalMGH = calculatedItems.reduce((acc, item) => acc + item.totalMGH, 0);
   
@@ -89,12 +89,15 @@ const Pricing = () => {
     const selectedGpuOption = gpuOptions.find(gpu => gpu.name === selectedGpu);
     if (!selectedGpuOption) return;
     
+    // Convert quantity to number to ensure it's a valid number
+    const quantityNum = typeof quantity === 'string' ? parseInt(quantity) || 1 : quantity;
+    
     const newItem = {
       id: Math.random().toString(36).substring(2, 9),
       gpuType: selectedGpu,
-      quantity: quantity,
+      quantity: quantityNum,
       mghPerHour: selectedGpuOption.mghPerHour,
-      totalMGH: selectedGpuOption.mghPerHour * quantity * 720, // Assuming 720 hours in a month (30 days)
+      totalMGH: selectedGpuOption.mghPerHour * quantityNum * 720, // Assuming 720 hours in a month (30 days)
     };
     
     setCalculatedItems([...calculatedItems, newItem]);
@@ -104,6 +107,10 @@ const Pricing = () => {
   
   const removeItem = (id: string) => {
     setCalculatedItems(calculatedItems.filter(item => item.id !== id));
+  };
+  
+  const clearAllItems = () => {
+    setCalculatedItems([]);
   };
   
   const getRecommendedPlan = () => {
@@ -245,12 +252,11 @@ const Pricing = () => {
                   value={quantity}
                   onChange={(e) => {
                     const value = e.target.value;
-                    // Allow empty string (for deletion) or convert to number
                     if (value === '') {
-                      setQuantity(1);
+                      setQuantity('');
                     } else {
                       const numValue = parseInt(value);
-                      if (!isNaN(numValue)) {
+                      if (!isNaN(numValue) && numValue > 0) {
                         setQuantity(numValue);
                       }
                     }
@@ -263,7 +269,7 @@ const Pricing = () => {
                 <Button 
                   onClick={addItem} 
                   className="w-full"
-                  disabled={!selectedGpu}
+                  disabled={!selectedGpu || (typeof quantity === 'string' && quantity === '') || (typeof quantity === 'number' && quantity < 1)}
                 >
                   <Plus className="mr-2 h-4 w-4" /> Add to Estimate
                 </Button>
@@ -272,7 +278,17 @@ const Pricing = () => {
             
             {calculatedItems.length > 0 && (
               <div className="mt-8">
-                <h3 className="text-lg font-medium mb-4 text-foreground">Your Configuration</h3>
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-lg font-medium text-foreground">Your Configuration</h3>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={clearAllItems}
+                    className="text-muted-foreground hover:text-destructive"
+                  >
+                    <Eraser className="mr-2 h-4 w-4" /> Clear All
+                  </Button>
+                </div>
                 
                 <div className="rounded-lg overflow-hidden border border-border">
                   <Table>
