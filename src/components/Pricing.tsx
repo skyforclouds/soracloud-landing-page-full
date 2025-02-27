@@ -9,8 +9,6 @@ const plans = [
     description: "Get started with GPU orchestration",
     quota: "1,500 MGH",
     features: [
-      "1,500 MGH included",
-      "Overage at $0.05 / MGH",
       "1 workspace",
       "Community support"
     ],
@@ -22,8 +20,6 @@ const plans = [
     description: "Everything in Developer, plus:",
     quota: "40,000 MGH",
     features: [
-      "40,000 MGH credits",
-      "Overage at $0.035 / MGH",
       "Up to 10 web console environments",
       "Early access to new features",
       "Email support with specialists",
@@ -37,9 +33,8 @@ const plans = [
     name: "Enterprise",
     price: "Custom",
     description: "Everything in Business, plus:",
-    quota: "Custom MGH credits",
+    quota: "Custom MGH pricing",
     features: [
-      "Custom MGH credits",
       "Unlimited web console environments",
       "Implementation support + dedicated team",
       "Enterprise security package (SSO, audit logs)",
