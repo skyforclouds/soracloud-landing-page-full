@@ -1,7 +1,6 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Info } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Check, Info } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -57,6 +56,17 @@ const Pricing = () => {
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Simple, Transparent Pricing</h1>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Choose the plan that fits your needs. Start with a monthly quota and only pay for what you use beyond that.
+            </p>
+          </motion.div>
           <h2 className="text-3xl font-bold mb-4 text-foreground">Simple, Predictable Pricing</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Start with a generous monthly quota of Managed GPU Hours (MGH)
@@ -72,11 +82,7 @@ const Pricing = () => {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-            . Only pay for additional usage beyond your plan's quota.{" "}
-            <Link to="/pricing" className="text-accent hover:underline inline-flex items-center">
-              Go to pricing calculator
-              <ArrowRight className="h-4 w-4 ml-1" />
-            </Link>
+            . Only pay for additional usage beyond your plan's quota.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
