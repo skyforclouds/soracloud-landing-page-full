@@ -224,7 +224,7 @@ const Pricing = () => {
                   <SelectTrigger id="gpu-type" className="w-full">
                     <SelectValue placeholder="Select GPU" />
                   </SelectTrigger>
-                  <SelectContent position="popper" align="start" sideOffset={4}>
+                  <SelectContent position="item-aligned" align="center">
                     {gpuOptions.map((gpu) => (
                       <SelectItem key={gpu.name} value={gpu.name}>
                         {gpu.name} ({gpu.mghPerHour} MGH/hr)
@@ -243,7 +243,18 @@ const Pricing = () => {
                   type="number"
                   min="1"
                   value={quantity}
-                  onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    // Allow empty string (for deletion) or convert to number
+                    if (value === '') {
+                      setQuantity(1);
+                    } else {
+                      const numValue = parseInt(value);
+                      if (!isNaN(numValue)) {
+                        setQuantity(numValue);
+                      }
+                    }
+                  }}
                   className="w-full"
                 />
               </div>
