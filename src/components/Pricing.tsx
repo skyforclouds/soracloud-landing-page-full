@@ -62,28 +62,24 @@ const Pricing = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Simple, Transparent Pricing</h1>
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Choose the plan that fits your needs. Start with a monthly quota and only pay for what you use beyond that.
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Simple, Predictable Pricing</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Start with a generous monthly quota of Managed GPU Hours (MGH)
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="inline-flex items-center ml-1 text-muted-foreground hover:text-foreground">
+                      <Info className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-secondary p-2 shadow-lg rounded-md border border-border max-w-xs text-foreground">
+                    <p>Based on type and number of GPUs managed by SoraCloud</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              . Only pay for additional usage beyond your plan's quota.
             </p>
           </motion.div>
-          <h2 className="text-3xl font-bold mb-4 text-foreground">Simple, Predictable Pricing</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Start with a generous monthly quota of Managed GPU Hours (MGH)
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button className="inline-flex items-center ml-1 text-muted-foreground hover:text-foreground">
-                    <Info className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent className="bg-secondary p-2 shadow-lg rounded-md border border-border max-w-xs text-foreground">
-                  <p>Based on type and number of GPUs managed by SoraCloud</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            . Only pay for additional usage beyond your plan's quota.
-          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
