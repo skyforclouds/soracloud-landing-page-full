@@ -1,12 +1,17 @@
 
 import { motion } from "framer-motion";
-import { Check, Info } from "lucide-react";
+import { Check, Info, Plus, Trash } from "lucide-react";
+import { useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import { Button } from "./ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Input } from "./ui/input";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
 
 const plans = [
   {
@@ -14,6 +19,7 @@ const plans = [
     price: "Free",
     description: "Get started with GPU orchestration",
     quota: "1,500 MGH",
+    quotaValue: 1500,
     features: [
       "1 workspace",
       "Community support"
@@ -25,6 +31,7 @@ const plans = [
     price: "890",
     description: "Everything in Developer, plus:",
     quota: "40,000 MGH",
+    quotaValue: 40000,
     features: [
       "Up to 10 workspaces",
       "Early access to new features",
@@ -40,6 +47,7 @@ const plans = [
     price: "Custom",
     description: "Everything in Business, plus:",
     quota: "Custom MGH pricing including bulk discounts",
+    quotaValue: 100000,
     features: [
       "Unlimited workspaces",
       "Implementation support + dedicated team",
@@ -51,7 +59,66 @@ const plans = [
   }
 ];
 
+const gpuOptions = [
+  { name: "NVIDIA A100", mghPerHour: 8 },
+  { name: "NVIDIA H100", mghPerHour: 16 },
+  { name: "NVIDIA L4", mghPerHour: 2 },
+  { name: "NVIDIA T4", mghPerHour: 1 },
+  { name: "AMD MI250", mghPerHour: 7 },
+  { name: "AMD MI100", mghPerHour: 5 },
+];
+
 const Pricing = () => {
+  const [calculatedItems, setCalculatedItems] = useState<{
+    id: string;
+    gpuType: string;
+    quantity: number;
+    mghPerHour: number;
+    totalMGH: number;
+  }[]>([]);
+  
+  const [selectedGpu, setSelectedGpu] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  
+  const totalMGH = calculatedItems.reduce((acc, item) => acc + item.totalMGH, 0);
+  
+  const addItem = () => {
+    if (!selectedGpu) return;
+    
+    const selectedGpuOption = gpuOptions.find(gpu => gpu.name === selectedGpu);
+    if (!selectedGpuOption) return;
+    
+    const newItem = {
+      id: Math.random().toString(36).substring(2, 9),
+      gpuType: selectedGpu,
+      quantity: quantity,
+      mghPerHour: selectedGpuOption.mghPerHour,
+      totalMGH: selectedGpuOption.mghPerHour * quantity * 720, // Assuming 720 hours in a month (30 days)
+    };
+    
+    setCalculatedItems([...calculatedItems, newItem]);
+    setSelectedGpu("");
+    setQuantity(1);
+  };
+  
+  const removeItem = (id: string) => {
+    setCalculatedItems(calculatedItems.filter(item => item.id !== id));
+  };
+  
+  const getRecommendedPlan = () => {
+    if (totalMGH === 0) return null;
+    
+    if (totalMGH <= plans[0].quotaValue) {
+      return plans[0]; // Developer
+    } else if (totalMGH <= plans[1].quotaValue) {
+      return plans[1]; // Business
+    } else {
+      return plans[2]; // Enterprise
+    }
+  };
+  
+  const recommendedPlan = getRecommendedPlan();
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
@@ -134,6 +201,123 @@ const Pricing = () => {
             </motion.div>
           ))}
         </div>
+        
+        {/* Pricing Calculator Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-24 max-w-4xl mx-auto"
+        >
+          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Pricing Calculator</h2>
+          <p className="text-muted-foreground text-center mb-8">Estimate your monthly GPU usage and find the right plan for your needs.</p>
+          
+          <div className="glass-effect rounded-2xl p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div>
+                <label htmlFor="gpu-type" className="block text-sm font-medium text-muted-foreground mb-2">
+                  GPU Type
+                </label>
+                <Select value={selectedGpu} onValueChange={setSelectedGpu}>
+                  <SelectTrigger id="gpu-type" className="w-full">
+                    <SelectValue placeholder="Select GPU" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {gpuOptions.map((gpu) => (
+                      <SelectItem key={gpu.name} value={gpu.name}>
+                        {gpu.name} ({gpu.mghPerHour} MGH/hr)
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div>
+                <label htmlFor="quantity" className="block text-sm font-medium text-muted-foreground mb-2">
+                  Quantity
+                </label>
+                <Input
+                  id="quantity"
+                  type="number"
+                  min="1"
+                  value={quantity}
+                  onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                  className="w-full"
+                />
+              </div>
+              
+              <div className="flex items-end">
+                <Button 
+                  onClick={addItem} 
+                  className="w-full"
+                  disabled={!selectedGpu}
+                >
+                  <Plus className="mr-2 h-4 w-4" /> Add to Estimate
+                </Button>
+              </div>
+            </div>
+            
+            {calculatedItems.length > 0 && (
+              <div className="mt-8">
+                <h3 className="text-lg font-medium mb-4 text-foreground">Your Configuration</h3>
+                
+                <div className="rounded-lg overflow-hidden border border-border">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>GPU Type</TableHead>
+                        <TableHead>Quantity</TableHead>
+                        <TableHead>MGH/Hour</TableHead>
+                        <TableHead>Monthly MGH</TableHead>
+                        <TableHead className="w-[80px]"></TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {calculatedItems.map((item) => (
+                        <TableRow key={item.id}>
+                          <TableCell>{item.gpuType}</TableCell>
+                          <TableCell>{item.quantity}</TableCell>
+                          <TableCell>{item.mghPerHour * item.quantity}</TableCell>
+                          <TableCell>{item.totalMGH.toLocaleString()}</TableCell>
+                          <TableCell>
+                            <Button 
+                              variant="ghost" 
+                              size="icon"
+                              onClick={() => removeItem(item.id)}
+                              className="text-muted-foreground hover:text-destructive"
+                            >
+                              <Trash className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+                
+                <div className="mt-6 p-4 rounded-lg bg-secondary/50 flex flex-col md:flex-row justify-between items-center">
+                  <div>
+                    <p className="text-lg font-medium text-foreground">
+                      Estimated Monthly Usage: <span className="text-accent">{totalMGH.toLocaleString()} MGH</span>
+                    </p>
+                  </div>
+                  
+                  {recommendedPlan && (
+                    <div className="mt-4 md:mt-0">
+                      <p className="text-muted-foreground">
+                        Recommended Plan:
+                        <span className="ml-2 font-medium text-foreground">
+                          {recommendedPlan.name}
+                        </span>
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
