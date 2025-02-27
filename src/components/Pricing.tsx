@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Check, Info } from "lucide-react";
+import { ArrowRight, Check, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Tooltip,
@@ -27,7 +27,7 @@ const plans = [
     description: "Everything in Developer, plus:",
     quota: "40,000 MGH",
     features: [
-      "Up to 10 web console environments",
+      "Up to 10 workspaces",
       "Early access to new features",
       "Email support with specialists",
       "Priority support with dedicated engineer",
@@ -40,9 +40,9 @@ const plans = [
     name: "Enterprise",
     price: "Custom",
     description: "Everything in Business, plus:",
-    quota: "Custom MGH pricing",
+    quota: "Custom MGH pricing including bulk discounts",
     features: [
-      "Unlimited web console environments",
+      "Unlimited workspaces",
       "Implementation support + dedicated team",
       "Enterprise security package (SSO, audit logs)",
       "On-premise support",
@@ -73,8 +73,9 @@ const Pricing = () => {
               </Tooltip>
             </TooltipProvider>
             . Only pay for additional usage beyond your plan's quota.{" "}
-            <Link to="/pricing" className="text-accent hover:underline">
+            <Link to="/pricing" className="text-accent hover:underline inline-flex items-center">
               Go to pricing calculator
+              <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
           </p>
         </div>
