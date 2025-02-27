@@ -185,7 +185,7 @@ const Pricing = () => {
                 <p className="text-muted-foreground text-sm">{plan.description}</p>
                 <div className="mt-4 p-2 bg-secondary/70 rounded-lg">
                   <p className="text-sm font-medium text-foreground">
-                    Includes {plan.quota}
+                    {plan.quota}
                     <br />
                     <span className="text-muted-foreground">
                       Then {plan.overageRate}
