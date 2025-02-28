@@ -46,6 +46,13 @@ export default {
           foreground: "#DAE5F0",
         },
       },
+      fontWeight: {
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+      },
       keyframes: {
         "fade-up": {
           "0%": {
