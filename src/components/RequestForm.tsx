@@ -21,6 +21,11 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
     linkedin: "",
     hearAboutUs: "",
     howCanWeHelp: "",
+    useCase: "",
+    expectedVolume: "",
+    timeline: "",
+    technicalRequirements: "",
+    additionalComments: "",
     consentToMarketing: false,
     interestedInServerless: false,
     interestedInMultimodal: false,
@@ -76,7 +81,7 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
             </div>
             
             <div className="px-6 md:px-10 overflow-y-auto flex-grow">
-              <form onSubmit={handleSubmit} className="space-y-6 pb-24">
+              <form onSubmit={handleSubmit} id="request-form" className="space-y-6 pb-24">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name<span className="text-accent">*</span>
@@ -205,8 +210,72 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
                     rows={4}
                   />
                 </div>
+
+                {/* Additional fields to lengthen the form for scroll testing */}
+                <div>
+                  <label htmlFor="useCase" className="block text-sm font-medium mb-2">
+                    Tell us about your use case
+                  </label>
+                  <Textarea
+                    id="useCase"
+                    name="useCase"
+                    value={formData.useCase}
+                    onChange={handleChange}
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="expectedVolume" className="block text-sm font-medium mb-2">
+                    Expected volume of requests
+                  </label>
+                  <Input
+                    id="expectedVolume"
+                    name="expectedVolume"
+                    value={formData.expectedVolume}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="timeline" className="block text-sm font-medium mb-2">
+                    Implementation timeline
+                  </label>
+                  <Input
+                    id="timeline"
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="technicalRequirements" className="block text-sm font-medium mb-2">
+                    Technical requirements
+                  </label>
+                  <Textarea
+                    id="technicalRequirements"
+                    name="technicalRequirements"
+                    value={formData.technicalRequirements}
+                    onChange={handleChange}
+                    rows={3}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="additionalComments" className="block text-sm font-medium mb-2">
+                    Additional comments
+                  </label>
+                  <Textarea
+                    id="additionalComments"
+                    name="additionalComments"
+                    value={formData.additionalComments}
+                    onChange={handleChange}
+                    rows={3}
+                  />
+                </div>
                 
-                <div className="flex items-start space-x-2">
+                <div className="flex items-start space-x-2 mb-6">
                   <Checkbox 
                     id="consentToMarketing" 
                     checked={formData.consentToMarketing}
@@ -224,7 +293,7 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
               </form>
             </div>
             
-            <div className="p-6 md:p-10 pt-4 border-t border-border mt-auto sticky bottom-0 bg-background">
+            <div className="p-6 md:p-10 pt-6 mt-auto sticky bottom-0 bg-background">
               <Button type="submit" form="request-form" className="w-full font-medium">
                 Submit
               </Button>
