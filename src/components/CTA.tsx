@@ -13,10 +13,10 @@ const CTA = () => {
           className="glass-effect rounded-2xl p-12 text-center"
         >
           <h2 className="text-3xl font-medium mb-6 text-foreground">
-            Ready to stop wrangling GPUs?
+            Ready to Accelerate Your AI Development?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            SoraCloud gives you the tools to manage and optimize your AI infrastructure, so you can focus on building amazing AI products.
+            Join leading organizations using Soracloud to build and scale their AI applications.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -26,12 +26,6 @@ const CTA = () => {
               className="px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium"
             >
               Request Access
-            </a>
-            <a
-              href="/docs"
-              className="px-8 py-3 border border-border rounded-lg hover:bg-secondary/60 transition-colors"
-            >
-              Learn More
             </a>
           </div>
         </motion.div>
