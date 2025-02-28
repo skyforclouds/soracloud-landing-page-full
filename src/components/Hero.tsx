@@ -13,7 +13,7 @@ const Hero = () => {
         <span className="inline-block px-3 py-1 text-sm font-medium bg-accent/10 text-accent rounded-full mb-6">
           Coming Soon!
         </span>
-        <h1 className="text-4xl md:text-6xl font-extralight mb-6 tracking-tight text-foreground">
+        <h1 className="text-4xl md:text-6xl font-medium mb-6 tracking-tight text-foreground">
           The <em className="not-italic text-gradient">Operating System</em> for Your AI Infrastructure
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
