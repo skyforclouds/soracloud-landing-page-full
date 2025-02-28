@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Index from "./pages/Index";
 import PricingPage from "./pages/PricingPage";
 import DocsPage from "./pages/DocsPage";
@@ -12,8 +13,8 @@ import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
-  // Create a client inside the component
-  const queryClient = new QueryClient();
+  // Create a client state
+  const [queryClient] = useState(() => new QueryClient());
   
   return (
     <QueryClientProvider client={queryClient}>
