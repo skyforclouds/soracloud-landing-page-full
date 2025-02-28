@@ -211,7 +211,7 @@ const Pricing = ({ showCalculator = true }) => {
                     href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center"
+                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center font-semibold"
                   >
                     Contact Sales
                   </a>
@@ -220,7 +220,7 @@ const Pricing = ({ showCalculator = true }) => {
                     href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center"
+                    className="w-full mt-8 px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors text-center font-semibold"
                   >
                     Request Access
                   </a>
