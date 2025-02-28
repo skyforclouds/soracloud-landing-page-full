@@ -137,7 +137,7 @@ const Pricing = ({ showCalculator = true }) => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Simple, Predictable Pricing</h1>
+            <h1 className="text-4xl md:text-5xl font-medium mb-6 text-foreground">Simple, Predictable Pricing</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Start with a generous monthly quota of Managed GPU Hours (MGH)
               <TooltipProvider>
@@ -169,15 +169,15 @@ const Pricing = ({ showCalculator = true }) => {
               }`}
             >
               <div className="p-8 border-b border-border/50">
-                <h3 className="text-2xl font-bold mb-2 text-foreground">{plan.name}</h3>
+                <h3 className="text-2xl font-medium mb-2 text-foreground">{plan.name}</h3>
                 <div className="flex items-baseline mb-4">
                   {plan.price === "Custom" ? (
-                    <span className="text-4xl font-bold text-foreground">Custom</span>
+                    <span className="text-4xl font-medium text-foreground">Custom</span>
                   ) : plan.price === "Free" ? (
-                    <span className="text-4xl font-bold text-foreground">Free</span>
+                    <span className="text-4xl font-medium text-foreground">Free</span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold text-foreground">${plan.price}</span>
+                      <span className="text-4xl font-medium text-foreground">${plan.price}</span>
                       <span className="text-muted-foreground ml-2">/month</span>
                     </>
                   )}
@@ -239,7 +239,7 @@ const Pricing = ({ showCalculator = true }) => {
             viewport={{ once: true }}
             className="mt-24 max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Pricing Calculator</h2>
+            <h2 className="text-3xl font-medium text-center mb-8 text-foreground">Pricing Calculator</h2>
             <p className="text-muted-foreground text-center mb-8">Estimate your monthly GPU usage and find the right plan for your needs.</p>
             
             <div className="glass-effect rounded-2xl p-8">

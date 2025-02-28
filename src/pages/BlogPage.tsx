@@ -59,7 +59,7 @@ const BlogPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-medium mb-6 text-foreground">Blog</h1>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
             Insights, tutorials, and news about AI infrastructure and SoraCloud
           </p>
@@ -88,7 +88,7 @@ const BlogPage = () => {
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-xl font-bold mb-2 text-foreground">{post.title}</h2>
+                  <h2 className="text-xl font-medium mb-2 text-foreground">{post.title}</h2>
                   <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <div className="flex items-center text-sm text-muted-foreground">

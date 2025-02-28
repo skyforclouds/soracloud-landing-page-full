@@ -1,26 +1,40 @@
 
-import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent"></div>
-      <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-        <h2 className="text-4xl font-bold mb-6 text-foreground">Ready to Accelerate Your AI Development?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground">
-          Join leading organizations using SoraCloud to build and scale their AI applications.
-        </p>
-        <div className="flex justify-center">
-          <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-lg">
+    <section className="py-20 px-4">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="glass-effect rounded-2xl p-12 text-center"
+        >
+          <h2 className="text-3xl font-medium mb-6 text-foreground">
+            Ready to stop wrangling GPUs?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            SoraCloud gives you the tools to manage and optimize your AI infrastructure, so you can focus on building amazing AI products.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScFmbriWn_BYPFTQ_WtiBaU4KBn7JkUySxi3DCo24C9LvR36Q/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors"
+            >
               Request Access
-            </Button>
-          </a>
-        </div>
+            </a>
+            <a
+              href="/docs"
+              className="px-8 py-3 border border-border rounded-lg hover:bg-secondary/60 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

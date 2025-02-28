@@ -15,7 +15,7 @@ const CompanyPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">We wrangle GPU infrastructure so you can focus on building AI products.</h1>
+          <h1 className="text-4xl md:text-5xl font-medium mb-6 text-foreground">We wrangle GPU infrastructure so you can focus on building AI products.</h1>
           <div className="mt-6 mb-8">
             <a href="mailto:info@soracloud.ai">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -52,7 +52,7 @@ const CompanyPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center mb-10"
             >
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Build stuff. Have fun.</h2>
+              <h2 className="text-3xl font-medium mb-4 text-foreground">Build stuff. Have fun.</h2>
             </motion.div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

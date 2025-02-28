@@ -49,7 +49,7 @@ const DocsPage = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">Documentation</h1>
+          <h1 className="text-4xl md:text-5xl font-medium mb-6 text-foreground">Documentation</h1>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
             Learn how to use SoraCloud to build, deploy, and scale your AI applications
           </p>
@@ -65,7 +65,7 @@ const DocsPage = () => {
               className="glass-effect rounded-xl border-border/50 hover:bg-secondary/40 transition-all p-6"
             >
               <div className="mb-4">{category.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{category.title}</h3>
+              <h3 className="text-xl font-medium mb-2 text-foreground">{category.title}</h3>
               <p className="text-muted-foreground mb-4">{category.description}</p>
               <Link to={category.path} className="text-accent font-medium flex items-center">
                 Read more <ChevronRight className="w-4 h-4 ml-1" />
