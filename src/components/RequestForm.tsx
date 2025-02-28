@@ -76,7 +76,7 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
                 </button>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6 flex-grow">
+              <form onSubmit={handleSubmit} className="space-y-6 overflow-y-auto flex-grow">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name<span className="text-accent">*</span>
@@ -222,7 +222,7 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
                   </label>
                 </div>
                 
-                <div className="pt-4">
+                <div className="pt-6 sticky bottom-0 bg-background pb-6">
                   <Button type="submit" className="w-full font-medium">
                     Submit
                   </Button>
