@@ -63,20 +63,20 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 h-full w-full sm:w-[600px] bg-background border-l border-border z-50 overflow-y-auto"
+            className="fixed right-0 top-0 h-full w-full sm:w-[600px] bg-background border-l border-border z-50 flex flex-col"
           >
-            <div className="p-6 md:p-10 flex flex-col h-full">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-2xl font-medium">Request Access</h2>
-                <button 
-                  onClick={onClose}
-                  className="rounded-full p-2 hover:bg-secondary transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-6 overflow-y-auto flex-grow">
+            <div className="p-6 md:p-10 flex justify-between items-center">
+              <h2 className="text-2xl font-medium">Request Access</h2>
+              <button 
+                onClick={onClose}
+                className="rounded-full p-2 hover:bg-secondary transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className="px-6 md:px-10 overflow-y-auto flex-grow">
+              <form onSubmit={handleSubmit} className="space-y-6 pb-24">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name<span className="text-accent">*</span>
@@ -221,13 +221,13 @@ const RequestForm = ({ isOpen, onClose }: RequestFormProps) => {
                     I consent to receiving email communications and marketing material from Soracloud
                   </label>
                 </div>
-                
-                <div className="pt-6 sticky bottom-0 bg-background pb-6">
-                  <Button type="submit" className="w-full font-medium">
-                    Submit
-                  </Button>
-                </div>
               </form>
+            </div>
+            
+            <div className="p-6 md:p-10 pt-4 border-t border-border mt-auto sticky bottom-0 bg-background">
+              <Button type="submit" form="request-form" className="w-full font-medium">
+                Submit
+              </Button>
             </div>
           </motion.div>
         </>
