@@ -1,4 +1,6 @@
 
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,11 +40,26 @@
   
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'PP Neue Montreal', sans-serif;
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-light tracking-tight;
-    letter-spacing: -0.02em;
+    @apply font-extralight tracking-tight;
+    font-family: 'PP Neue Montreal', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-weight: 200;
+  }
+
+  h2, h3 {
+    font-weight: 300;
+  }
+
+  h4, h5, h6 {
+    font-weight: 400;
   }
 }
 

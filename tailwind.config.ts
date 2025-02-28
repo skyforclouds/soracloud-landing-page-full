@@ -19,6 +19,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['PP Neue Montreal', 'sans-serif'],
+      },
       colors: {
         border: "#2A2A3580",
         input: "#2A2A3580",
@@ -47,11 +50,14 @@ export default {
         },
       },
       fontWeight: {
+        'thin': '100',
+        'extralight': '200',
         'light': '300',
         'normal': '400',
         'medium': '500',
         'semibold': '600',
         'bold': '700',
+        'extrabold': '800',
       },
       keyframes: {
         "fade-up": {
