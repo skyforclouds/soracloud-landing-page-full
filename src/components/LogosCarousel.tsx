@@ -40,7 +40,7 @@ const LogosCarousel = () => {
   return (
     <section className="py-8 bg-secondary/30 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl font-semibold text-center mb-8 text-foreground">
+        <h2 className="text-2xl font-extralight text-center mb-8 text-foreground">
           Trusted by AI developers and researchers
         </h2>
         <div className="relative overflow-hidden">

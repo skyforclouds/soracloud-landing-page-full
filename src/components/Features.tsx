@@ -42,7 +42,7 @@ const Features = () => {
               <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 text-accent">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
+              <h3 className="text-xl font-extralight mb-2 text-foreground">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}

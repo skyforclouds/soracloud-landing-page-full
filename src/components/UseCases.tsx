@@ -28,7 +28,7 @@ const UseCases = () => {
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 text-foreground">
+          <h2 className="text-3xl font-extralight mb-4 text-foreground">
             Stop wrangling GPUs, start building AI
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -45,7 +45,7 @@ const UseCases = () => {
             className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 mb-20 last:mb-0`}
           >
             <div className="flex-1">
-              <h3 className="text-2xl font-bold mb-4 text-foreground">{useCase.title}</h3>
+              <h3 className="text-2xl font-extralight mb-4 text-foreground">{useCase.title}</h3>
               <p className="text-muted-foreground mb-6">{useCase.description}</p>
               <button className="group inline-flex items-center text-accent hover:text-accent/90 transition-colors">
                 Learn more
